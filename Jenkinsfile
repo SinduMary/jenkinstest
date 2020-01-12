@@ -1,3 +1,4 @@
+               jacoco()
 pipeline {
     agent any
     stages {
@@ -21,7 +22,7 @@ pipeline {
         stage('JaCoCo') {
 		steps {
                 echo 'Code Coverage'
-               jacoco()
+               jacoco(execPattern : 'target/*.exe')
             }
 	}
         stage('Sonar') {
