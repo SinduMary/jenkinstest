@@ -33,7 +33,7 @@ pipeline {
             steps {
                 echo 'Sonar Scanner'
                //def scannerHome = tool 'sonar'
-			    withSonarQubeEnv('sonars') {
+			    withSonarQubeEnv('sonar') {
 			    	bat 'C:/Users/sindu.mary.lawrence/Downloads/sonar-runner-dist-2.4/sonar-runner-2.4/bin/sonar-runner'
 			    }
             }
