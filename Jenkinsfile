@@ -1,5 +1,6 @@
 pipeline {
     agent any
+	def mvnHome = tool 'mvn3'
     stages {
         stage('Checkout') {
             steps {
@@ -9,8 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Clean Build'
-		    def mvnHome = tool 'mvn3'
-              		 bat(/"%MVN_HOME%\bin\mvn.cmd" -Dmaven.test.failure.ignore clean compile/)
+		        		 bat(/"%MVN_HOME%\bin\mvn.cmd" -Dmaven.test.failure.ignore clean compile/)
 
 
                           }
