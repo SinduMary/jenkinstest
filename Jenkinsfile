@@ -19,16 +19,12 @@ pipeline {
             }
         }
         stage('JaCoCo') {
-            steps {
-                echo 'Code Coverage'
-                jacoco( 
+            step([$class: 'JacocoPublisher', 
       execPattern: 'target/*.exec',
       classPattern: 'target/classes',
       sourcePattern: 'src/main/java',
       exclusionPattern: 'src/test*'
-)
-            }
-        }
+	])
         stage('Sonar') {
             steps {
                 echo 'Sonar Scanner'
