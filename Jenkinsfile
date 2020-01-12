@@ -32,7 +32,7 @@ pipeline {
         stage('Package') {
             steps {
                 echo 'Packaging'
-                mvn package -DskipTests
+                mvn package
             }
         }
         stage('Deploy') {
