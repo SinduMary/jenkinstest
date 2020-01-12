@@ -3,6 +3,7 @@ pipeline {
 	environment {
      def mvnHome = tool 'mvn3'
 		def JAVA_HOME= tool 'jdk13' 
+		def sonarHome=tool 'sonars'
    }
 
     stages {
