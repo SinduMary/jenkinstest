@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
     stages {
@@ -10,13 +9,16 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Clean Build'
-               mvn clean compile
-            }
+		    def mvnHome = tool 'mvn3'
+              		 bat(/"%MVN_HOME%\bin\mvn.cmd" -Dmaven.test.failure.ignore clean compile/)
+
+
+                          }
         }
         stage('Test') {
             steps {
                 echo 'Testing'
-                mvn test
+                 bat(/"%MVN_HOME%\bin\mvn.cmd" -Dmaven.test.failure.ignore test/)
             }
         }
         stage('Sonar') {
@@ -32,7 +34,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo '## TODO DEPLOYMENT ##'
-		    mvn deploy
+		     bat(/"%MVN_HOME%\bin\mvn.cmd" -Dmaven.test.failure.ignore deploy/)
             }
         }
     }
