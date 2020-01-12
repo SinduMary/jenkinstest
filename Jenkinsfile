@@ -21,7 +21,7 @@ pipeline {
         stage('JaCoCo') {
             steps {
                 echo 'Code Coverage'
-                jacoco()
+                jacoco(execPattern: 'target/jacoco.exec')
             }
         }
         stage('Sonar') {
