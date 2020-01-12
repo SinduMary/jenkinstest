@@ -2,6 +2,7 @@ pipeline {
     agent any
 	environment {
      def mvnHome = tool 'mvn3'
+		def JAVA_HOME= tool 'jdk13' 
    }
 
     stages {
@@ -13,16 +14,19 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Clean Build'
+		    withEnv(["JAVA_HOME=${ tool 'jdk13' }", "PATH+MAVEN=${tool 'mvn3'}/bin:${env.JAVA_HOME}/bin"]) {
 		        		 bat(/"%MVN_HOME%\bin\mvn.cmd" -Dmaven.test.failure.ignore clean compile/)
 
-
+		    }
                           }
         }
         stage('Test') {
             steps {
                 echo 'Testing'
+		    withEnv(["JAVA_HOME=${ tool 'jdk13' }", "PATH+MAVEN=${tool 'mvn3'}/bin:${env.JAVA_HOME}/bin"]) {
                  bat(/"%MVN_HOME%\bin\mvn.cmd" -Dmaven.test.failure.ignore test/)
             }
+	    }
         }
         stage('Sonar') {
             steps {
@@ -37,7 +41,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo '## TODO DEPLOYMENT ##'
+		    withEnv(["JAVA_HOME=${ tool 'jdk13' }", "PATH+MAVEN=${tool 'mvn3'}/bin:${env.JAVA_HOME}/bin"]) {
 		     bat(/"%MVN_HOME%\bin\mvn.cmd" -Dmaven.test.failure.ignore deploy/)
+		    }
             }
         }
     }
