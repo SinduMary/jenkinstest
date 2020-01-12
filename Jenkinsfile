@@ -25,6 +25,7 @@ pipeline {
       sourcePattern: 'src/main/java',
       exclusionPattern: 'src/test*'
 	])
+	}
         stage('Sonar') {
             steps {
                 echo 'Sonar Scanner'
