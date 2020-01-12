@@ -19,12 +19,7 @@ pipeline {
                 bat 'mvn test'
             }
         }
-        stage('JaCoCo') {
-		steps {
-                echo 'Code Coverage'
-               jacoco(execPattern : 'target/*.exe')
-            }
-	}
+        
         stage('Sonar') {
             steps {
                 echo 'Sonar Scanner'
@@ -43,6 +38,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo '## TODO DEPLOYMENT ##'
+		    bat 'mvn deploy'
             }
         }
     }
