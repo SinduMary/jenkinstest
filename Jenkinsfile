@@ -29,7 +29,7 @@ pipeline {
                 echo 'Sonar Scanner'
                	//def scannerHome = tool 'SonarQube Scanner 3.0'
 			    withSonarQubeEnv('SonarQube Server') {
-			    	bat 'C:/Dock/ci/sonar/sonar-scanner-3.0.3.778-windows/bin/sonar-scanner'
+			    	bat 'C:\Users\sindu.mary.lawrence\Downloads\sonar-runner-dist-2.4\sonar-runner-2.4\bin\sonar-runner'
 			    }
             }
         }
