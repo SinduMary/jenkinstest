@@ -28,12 +28,7 @@ pipeline {
 			    }
             }
         }
-        stage('Package') {
-            steps {
-                echo 'Packaging'
-                mvn package
-            }
-        }
+        
         stage('Deploy') {
             steps {
                 echo '## TODO DEPLOYMENT ##'
