@@ -1,6 +1,9 @@
 pipeline {
     agent any
-	def mvnHome = tool 'mvn3'
+	environment {
+     def mvnHome = tool 'mvn3'
+   }
+
     stages {
         stage('Checkout') {
             steps {
