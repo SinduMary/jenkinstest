@@ -10,13 +10,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Clean Build'
-                bat 'mvn clean compile'
+               mvn clean compile
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing'
-                bat 'mvn test'
+                mvn test
             }
         }
         
@@ -32,13 +32,13 @@ pipeline {
         stage('Package') {
             steps {
                 echo 'Packaging'
-                bat 'mvn package -DskipTests'
+                mvn package -DskipTests
             }
         }
         stage('Deploy') {
             steps {
                 echo '## TODO DEPLOYMENT ##'
-		    bat 'mvn deploy'
+		    mvn deploy
             }
         }
     }
