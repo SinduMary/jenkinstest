@@ -34,7 +34,12 @@ pipeline {
                 echo 'Sonar Scanner'
                //def scannerHome = tool 'sonar'
 			    withSonarQubeEnv('sonar') {	 	
-				    bat(/"%sonarHome%\bin\sonar-runner.bat"/)
+				  //  bat(/"%sonarHome%\bin\sonar-runner.bat"/)
+                      // sh './mvnw sonar:sonar -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_AUTH_TOKEN}' 
+				    bat(/"%MVN_HOME%\bin\mvn.cmd" /)
+        }
+    }
+    
 			    }
             }
         }
