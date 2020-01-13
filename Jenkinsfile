@@ -36,7 +36,7 @@ pipeline {
 			    withSonarQubeEnv('sonar') {	 	
 				  //  bat(/"%sonarHome%\bin\sonar-runner.bat"/)
                       // sh './mvnw sonar:sonar -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_AUTH_TOKEN}' 
-				    bat(/"%MVN_HOME%\bin\mvn.cmd" /)
+				    bat(/"%MVN_HOME%\bin\mvn.cmd" sonar:sonar /)
         }
         }
         }
