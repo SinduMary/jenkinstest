@@ -62,9 +62,6 @@
         <jacoco.class.covered-ratio>0.75</jacoco.class.covered-ratio>
     </properties>
 
-
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
