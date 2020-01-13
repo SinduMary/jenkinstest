@@ -33,13 +33,12 @@ pipeline {
             steps {
                 echo 'Sonar Scanner'
                //def scannerHome = tool 'sonar'
-			    withSonarQubeEnv('sonar') {
-			    	
-				    bat(/"%sonarHome%\bin\sonar-runner.bat")
+			    withSonarQubeEnv('sonar') {	 	
+				    bat(/"%sonarHome%\bin\sonar-runner.bat"/)
 			    }
             }
         }
-        
+      
         stage('Deploy') {
             steps {
                 echo '## TODO DEPLOYMENT ##'
