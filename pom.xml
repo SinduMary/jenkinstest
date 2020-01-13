@@ -22,6 +22,47 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<version.springfox-swagger2>2.7.0</version.springfox-swagger2>
+        <version.splunk-library-javalogging>1.6.0</version.splunk-library-javalogging>
+        <version.prometheus>0.4.0</version.prometheus>
+        <version.json-sanitizer>1.2.0</version.json-sanitizer>
+        <version.security-logging-logback>1.1.6</version.security-logging-logback>
+        <version.owasp.encoder>1.2.1</version.owasp.encoder>
+        <version.esapi.encoder>2.1.0.1</version.esapi.encoder>
+        <version.java>1.13</version.java>
+        <version.json-path>2.4.0</version.json-path>
+
+        <version.wiremock>2.18.0</version.wiremock>
+        <version.awaitility>3.1.5</version.awaitility>
+        <version.junit-params>1.1.1</version.junit-params>
+
+        <!-- build-time versions -->
+        <version.sonar-maven-plugin>3.4.0.905</version.sonar-maven-plugin>
+        <version.jacoco-maven-plugin>0.8.1</version.jacoco-maven-plugin>
+        <sonar.sources>src/main</sonar.sources>
+        <sonar.tests>src/test</sonar.tests>
+        <!-- Below property indicates the pattern of the test suite -->
+        <runSuite>**/*Suite.class</runSuite>
+        <!-- Sonar-JaCoCo properties -->
+        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+        <sonar.language>java</sonar.language>
+        <project.testresult.directory>${project.build.directory}/test-results</project.testresult.directory>
+        <!--<version.sleuth>2.0.1.RELEASE</version.sleuth>-->
+        <!-- <spring-cloud.version>Finchley.SR1</spring-cloud.version> -->
+        <springfox-version>2.5.0</springfox-version>
+        <version.owasp.encoder>1.2.2</version.owasp.encoder>
+        <!--Jacoco-->
+        <jacoco.instruction.covered-ratio>0.59</jacoco.instruction.covered-ratio>
+        <jacoco.branch.covered-ratio>0.99</jacoco.branch.covered-ratio>
+        <jacoco.line.covered-ratio>0.66</jacoco.line.covered-ratio>
+        <jacoco.complexity.covered-ratio>0.59</jacoco.complexity.covered-ratio>
+        <jacoco.method.covered-ratio>0.56</jacoco.method.covered-ratio>
+        <jacoco.class.covered-ratio>0.75</jacoco.class.covered-ratio>
+    </properties>
+
+
 	</properties>
 
 	<dependencies>
@@ -39,6 +80,17 @@
 
 	<build>
 		<plugins>
+			<!-- Below plugin ensures the execution of test cases during maven build-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>${runSuite}</include>
+                    </includes>
+                </configuration>
+            </plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
